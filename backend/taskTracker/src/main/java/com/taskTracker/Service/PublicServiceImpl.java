@@ -26,7 +26,7 @@ public class PublicServiceImpl  implements PublicService{
 			User fetchedUser = userRepository.findByEmailId(user.getEmailId());
 			String token;
 			if (fetchedUser != null && user.getPassword().equals(fetchedUser.getPassword()))
-				token = jwtUtil.generateToken(user);
+				token = jwtUtil.generateToken(fetchedUser);
 			else
 				throw new BadCredentialsException("Invalid credentials");
 			return ResponseEntity.ok().body(Map.of("token", token));
