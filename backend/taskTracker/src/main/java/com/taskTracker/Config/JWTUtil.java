@@ -21,7 +21,7 @@ public class JWTUtil {
 			User user = new User();
 			user.setNname(body.getSubject());
 			user.setUserId((String) body.get("userId"));
-			user.setRole((String) body.get("role"));
+			user.setRole("ROLE_"+(String) body.get("role"));
 			return user;
 
 		} catch (JwtException | ClassCastException e) {
@@ -31,7 +31,7 @@ public class JWTUtil {
 
 	final public String generateToken(User u) {
 		Claims claims = Jwts.claims().setSubject(u.getName());
-		claims.put("userId", u.getUserId() + "");
+		claims.put("emailId", u.getEmailId());
 		claims.put("role", u.getRole());
 
 		return Jwts.builder().setClaims(claims).signWith(SignatureAlgorithm.HS512, secret).compact();
