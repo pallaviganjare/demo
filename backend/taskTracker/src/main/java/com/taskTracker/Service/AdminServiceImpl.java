@@ -16,7 +16,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public ResponseEntity<Object> createUser(User user)
 	{
-		System.out.println(""+userRepository.insert(user));
+		userRepository.insert(user);
 		return ResponseEntity.ok().build();
 	}
 }
