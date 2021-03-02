@@ -25,13 +25,14 @@ public class PublicServiceImpl  implements PublicService{
 		try {
 			User fetchedUser = userRepository.findByEmailId(user.getEmailId());
 			String token;
-			if (fetchedUser != null && user.getPassword().equals(fetchedUser.getPassword()))
-				token = jwtUtil.generateToken(fetchedUser);
-			else
-				throw new BadCredentialsException("Invalid credentials");
+			if(fetchedUser == null )
+				throw new BadCredentialsException("Invalid Username");
+			if(!user.getPassword().equals(fetchedUser.getPassword()))
+				throw new BadCredentialsException("Invalid Password");
+			token = jwtUtil.generateToken(fetchedUser);
 			return ResponseEntity.ok().body(Map.of("token", token));
 		} catch (BadCredentialsException e) {
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message",e.getMessage()));
 		}
 	}
 }
