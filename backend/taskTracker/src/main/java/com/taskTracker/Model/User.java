@@ -11,18 +11,7 @@ public class User {
 	private String name;
 	private String password;
 	private String emailId;
-	private String role;
-	private int otpNumber;
-
-	public int getOtpNumber() {
-		return otpNumber;
-	}
-
-	public void setOtpNumber(int otpNumber) {
-		this.otpNumber = otpNumber;
-	}
-
-	public String getEmailId() {
+	private String role;	public String getEmailId() {
 		return emailId;
 	}
 

@@ -7,4 +7,6 @@ import com.taskTracker.Model.User;
 public interface PublicService {
 
 	ResponseEntity<Object> login(User user);
+
+	ResponseEntity<Object> updatePassword(User user);
 }
