@@ -20,4 +20,9 @@ public class PublicController {
 	{
 		return ServiceLocator.getPublicService().login(user);
 	}
+	@PostMapping(path = "/generateOtp",consumes = "application/json",produces = "application/json")
+	public ResponseEntity<Object> generateOTP(@RequestBody User user)
+	{
+		return ServiceLocator.getOtpService().generateOtp(user);
+	}
 }
