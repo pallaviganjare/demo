@@ -8,6 +8,26 @@ public class ServiceLocator {
 
 	private static PublicService publicService;
 	private static AdminService adminService;
+	private static OtpService otpService;
+	private static EmailService emailService;
+
+	public static EmailService getEmailService() {
+		return emailService;
+	}
+
+	@Autowired
+	public void setEmailService(EmailService emailService) {
+		ServiceLocator.emailService = emailService;
+	}
+
+	public static OtpService getOtpService() {
+		return otpService;
+	}
+
+	@Autowired
+	public void setOtpService(OtpService otpService) {
+		ServiceLocator.otpService = otpService;
+	}
 
 	public static AdminService getAdminService() {
 		return adminService;
