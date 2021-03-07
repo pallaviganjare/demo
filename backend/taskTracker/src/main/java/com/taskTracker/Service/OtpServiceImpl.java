@@ -37,13 +37,20 @@ public class OtpServiceImpl implements OtpService{
 		otp.setOtpNumber(otpNumber);
 		otp.setTimeStamp(new Date());
 		otp.setEmailId(user.getEmailId());
-		otpRepository.insert(otp);
+		otpRepository.save(otp);
 		return ResponseEntity.ok().body(Map.of("emailId",fetchedUser.getEmailId()));	
 	}
 	
 	@Override
-	public ResponseEntity<Object> verifyOtp(User user)
+	public ResponseEntity<Object> verifyOtp(User user,Otp otp)
 	{
-		return null;
+		Otp fetchedOtp = otpRepository.findByEmailId(user.getEmailId());
+		if(fetchedOtp==null)
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message","Invalid emailId"));
+		if(fetchedOtp.getTimeStamp().getTime()-(new Date()).getTime()>180000)
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message","Otp expired"));
+		if(fetchedOtp.getOtpNumber()!=otp.getOtpNumber())
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message","Invalid Otp"));
+		return ResponseEntity.ok().body(Map.of("emailId",fetchedOtp.getEmailId()));
 	}
 }

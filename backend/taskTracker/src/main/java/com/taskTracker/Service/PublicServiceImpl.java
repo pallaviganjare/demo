@@ -35,4 +35,14 @@ public class PublicServiceImpl  implements PublicService{
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message",e.getMessage()));
 		}
 	}
+	
+	@Override
+	public ResponseEntity<Object> updatePassword(User user)
+	{
+		User fetchedUser = userRepository.findByEmailId(user.getEmailId());
+		if(fetchedUser==null)
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message","Invalid emailId"));
+		userRepository.save(user);
+		return ResponseEntity.ok().body(Map.of("emailId",user.getEmailId()));
+	}
 }
