@@ -27,13 +27,8 @@ public class PublicController {
 		return ServiceLocator.getOtpService().generateOtp(user);
 	}
 	@PostMapping(path = "/verifyOtp",consumes = "application/json",produces = "application/json")
-	public ResponseEntity<Object> verifyOTP(@RequestBody User user,Otp otp)
+	public ResponseEntity<Object> verifyOTP(@RequestBody Otp otp)
 	{
-		return ServiceLocator.getOtpService().verifyOtp(user,otp);
-	}
-	@PostMapping(path = "/updatePassword",consumes = "application/json",produces = "application/json")
-	public ResponseEntity<Object> updatePassword(@RequestBody User user)
-	{
-		return ServiceLocator.getPublicService().updatePassword(user);
+		return ServiceLocator.getOtpService().verifyOtp(otp);
 	}
 }

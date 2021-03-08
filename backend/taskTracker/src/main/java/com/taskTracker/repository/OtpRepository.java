@@ -12,6 +12,5 @@ public interface OtpRepository extends MongoRepository<Otp,String> {
 	@Query("{ 'emailId' : ?0 }")
 	Otp findByEmailId(String emailId);
 	
-	@Query("{'emailId' : ?0}")
-	void deleteByEmail(String emailId);
+	Long deleteOtpByEmailId(String emailId);
 }

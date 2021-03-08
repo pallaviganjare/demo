@@ -9,7 +9,7 @@ public interface OtpService {
 
 	ResponseEntity<Object> generateOtp(User user);
 
-	ResponseEntity<Object> verifyOtp(User user, Otp otp);
+	ResponseEntity<Object> verifyOtp(Otp otp);
 
 
 }

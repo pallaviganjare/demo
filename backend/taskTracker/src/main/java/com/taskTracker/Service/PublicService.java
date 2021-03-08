@@ -8,5 +8,4 @@ public interface PublicService {
 
 	ResponseEntity<Object> login(User user);
 
-	ResponseEntity<Object> updatePassword(User user);
 }

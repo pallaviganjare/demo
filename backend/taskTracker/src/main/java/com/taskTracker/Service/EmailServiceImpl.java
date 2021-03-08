@@ -18,9 +18,9 @@ public class EmailServiceImpl implements EmailService {
 	{
 		SimpleMailMessage simpleMailMessage= new SimpleMailMessage();
 		//simpleMailMessage.setTo(user.getEmailId());
-		simpleMailMessage.setTo("harshal.gurav1998@gmail.com");
+		simpleMailMessage.setTo("agarwalhimanshu105@gmail.com");
 		simpleMailMessage.setText("Your OTP : "+otpNumber);
-		javaMailSender.send(simpleMailMessage);
+		//javaMailSender.send(simpleMailMessage);
 		return true;
 	}
 }
