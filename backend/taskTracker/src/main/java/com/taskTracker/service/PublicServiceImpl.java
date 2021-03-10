@@ -1,4 +1,4 @@
-package com.taskTracker.Service;
+package com.taskTracker.service;
 
 import java.util.Map;
 
@@ -8,9 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
-import com.taskTracker.Config.JWTUtil;
-import com.taskTracker.Model.User;
+import com.taskTracker.model.User;
 import com.taskTracker.repository.UserRepository;
+import com.taskTracker.util.JWTUtil;
 
 @Service
 public class PublicServiceImpl  implements PublicService{

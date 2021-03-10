@@ -1,11 +1,11 @@
-package com.taskTracker.Service;
+package com.taskTracker.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import com.taskTracker.Model.User;
+import com.taskTracker.model.User;
 
 @Service
 public class EmailServiceImpl implements EmailService {

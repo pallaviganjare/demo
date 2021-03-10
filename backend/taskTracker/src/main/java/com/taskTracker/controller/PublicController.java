@@ -1,4 +1,4 @@
-package com.taskTracker.Controller;
+package com.taskTracker.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.taskTracker.Model.Otp;
-import com.taskTracker.Model.User;
-import com.taskTracker.Service.ServiceLocator;
+import com.taskTracker.model.Otp;
+import com.taskTracker.model.User;
+import com.taskTracker.service.ServiceLocator;
 
 @RestController
 @RequestMapping("/api/public")

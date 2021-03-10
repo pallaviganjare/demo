@@ -1,6 +1,6 @@
-package com.taskTracker.Service;
+package com.taskTracker.service;
 
-import com.taskTracker.Model.User;
+import com.taskTracker.model.User;
 
 public interface EmailService {
 
