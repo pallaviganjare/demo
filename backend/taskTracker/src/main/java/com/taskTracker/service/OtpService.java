@@ -1,9 +1,9 @@
-package com.taskTracker.Service;
+package com.taskTracker.service;
 
 import org.springframework.http.ResponseEntity;
 
-import com.taskTracker.Model.Otp;
-import com.taskTracker.Model.User;
+import com.taskTracker.model.Otp;
+import com.taskTracker.model.User;
 
 public interface OtpService {
 
