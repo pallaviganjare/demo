@@ -1,4 +1,4 @@
-package com.taskTracker.Config;
+package com.taskTracker.config;
 
 import java.util.List;
 

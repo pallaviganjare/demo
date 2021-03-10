@@ -1,4 +1,4 @@
-package com.taskTracker.Config;
+package com.taskTracker.config;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,7 +17,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.taskTracker.Model.User;
+import com.taskTracker.model.User;
+import com.taskTracker.util.JWTUtil;
 
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {

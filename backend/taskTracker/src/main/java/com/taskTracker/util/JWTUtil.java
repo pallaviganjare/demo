@@ -1,8 +1,8 @@
-package com.taskTracker.Config;
+package com.taskTracker.util;
 
 import org.springframework.stereotype.Component;
 
-import com.taskTracker.Model.User;
+import com.taskTracker.model.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;

@@ -1,4 +1,4 @@
-package com.taskTracker.Model;
+package com.taskTracker.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

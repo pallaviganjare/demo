@@ -1,4 +1,4 @@
-package com.taskTracker.Controller;
+package com.taskTracker.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
