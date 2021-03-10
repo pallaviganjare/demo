@@ -52,7 +52,7 @@ public class OtpServiceImpl implements OtpService{
 		Otp fetchedOtp = otpRepository.findByEmailId(otp.getEmailId());
 		if(fetchedOtp==null)
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message","Invalid emailId"));
-		if(fetchedOtp.getTimeStamp().getTime()-(new Date()).getTime()>180000)
+		if((new Date()).getTime()-fetchedOtp.getTimeStamp().getTime()>180000)
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message","Otp expired"));
 		if(fetchedOtp.getOtpNumber()!=otp.getOtpNumber())
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message","Invalid Otp"));

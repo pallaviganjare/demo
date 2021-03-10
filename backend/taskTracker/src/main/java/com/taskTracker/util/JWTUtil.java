@@ -19,8 +19,7 @@ public class JWTUtil {
 			Claims body = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
 
 			User user = new User();
-			user.setNname(body.getSubject());
-			user.setUserId((String) body.get("userId"));
+			user.setFirstName(body.getSubject());
 			user.setRole("ROLE_"+(String) body.get("role"));
 			return user;
 
@@ -30,7 +29,7 @@ public class JWTUtil {
 	}
 
 	final public String generateToken(User u) {
-		Claims claims = Jwts.claims().setSubject(u.getName());
+		Claims claims = Jwts.claims().setSubject(u.getFirstName());
 		claims.put("emailId", u.getEmailId());
 		claims.put("role", u.getRole());
 

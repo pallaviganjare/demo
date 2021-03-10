@@ -13,4 +13,7 @@ public interface OtpRepository extends MongoRepository<Otp,String> {
 	Otp findByEmailId(String emailId);
 	
 	Long deleteOtpByEmailId(String emailId);
+
+	@Query(value="{ $where : 'new Date().getTime()-this.timeStamp.getTime()>180000' }",delete=true)
+	Long deleteExpiredOtp();
 }
