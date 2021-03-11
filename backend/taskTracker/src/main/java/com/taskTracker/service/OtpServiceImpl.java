@@ -1,14 +1,12 @@
 package com.taskTracker.service;
 
 import java.util.Date;
-import java.util.Map;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.taskTracker.exceptionHandler.ClientSideException;
 import com.taskTracker.model.Otp;
 import com.taskTracker.model.User;
 import com.taskTracker.repository.OtpRepository;
@@ -28,36 +26,36 @@ public class OtpServiceImpl implements OtpService{
 	private OtpRepository otpRepository;
 	
 	@Override
-	public ResponseEntity<Object> generateOtp(User user)
+	public String generateOtp(User user)
 	{
 		User fetchedUser = userRepository.findByEmailId(user.getEmailId());
 		if(fetchedUser==null)
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message","Invalid emailId"));
+			throw new ClientSideException(401,"Invalid emailId");
 		Random random = new Random();
 		final int otpNumber=1000+random.nextInt(999);
 		if(!ServiceLocator.getEmailService().sendEmail(fetchedUser, otpNumber))
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("message","Failed to send Email"));
+			throw new ClientSideException(500,"Failed to send Email");
 		Otp otp=new Otp();
 		otp.setOtpNumber(otpNumber);
 		otp.setTimeStamp(new Date());
 		otp.setEmailId(user.getEmailId());
 		otpRepository.deleteOtpByEmailId(otp.getEmailId());
 		otpRepository.insert(otp);
-		return ResponseEntity.ok().body(Map.of("emailId",fetchedUser.getEmailId()));	
+		return otp.getEmailId();	
 	}
 	
 	@Override
-	public ResponseEntity<Object> verifyOtp(Otp otp)
+	public String verifyOtp(Otp otp)
 	{
 		Otp fetchedOtp = otpRepository.findByEmailId(otp.getEmailId());
 		if(fetchedOtp==null)
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message","Invalid emailId"));
+			throw new ClientSideException(401,"Invalid emailId");
 		if((new Date()).getTime()-fetchedOtp.getTimeStamp().getTime()>180000)
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message","Otp expired"));
+			throw new ClientSideException(401,"OTP expired");
 		if(fetchedOtp.getOtpNumber()!=otp.getOtpNumber())
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message","Invalid Otp"));
+			throw new ClientSideException(401,"Invalid OTP");
 		User fetchedUser = userRepository.findByEmailId(otp.getEmailId());
 		String token=jwtUtil.generateToken(fetchedUser);
-		return ResponseEntity.ok().body(Map.of("token", token));
+		return token;
 	}
 }

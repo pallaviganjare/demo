@@ -1,6 +1,6 @@
 package com.taskTracker.config;
 
-import java.util.List;
+import java.util.Arrays;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,10 +43,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		final CorsConfiguration config = new CorsConfiguration();
-		config.setAllowedOrigins(List.of("*"));
-		config.setAllowedMethods(List.of("HEAD","GET", "POST", "PUT", "DELETE", "PATCH"));
+		config.setAllowedOrigins(Arrays.asList("*"));
+		config.setAllowedMethods(Arrays.asList("HEAD","GET", "POST", "PUT", "DELETE", "PATCH"));
 		//config.setAllowCredentials(true);
-		config.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
+		config.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		 source.registerCorsConfiguration("/**", config);
 		 return source;

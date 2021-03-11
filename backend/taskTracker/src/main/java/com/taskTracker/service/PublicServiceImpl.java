@@ -1,13 +1,9 @@
 package com.taskTracker.service;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
+import com.taskTracker.exceptionHandler.ClientSideException;
 import com.taskTracker.model.User;
 import com.taskTracker.repository.UserRepository;
 import com.taskTracker.util.JWTUtil;
@@ -21,18 +17,12 @@ public class PublicServiceImpl  implements PublicService{
 	private UserRepository userRepository;
 
 	@Override
-	public ResponseEntity<Object> login(User user) {
-		try {
+	public String login(User user) {
 			User fetchedUser = userRepository.findByEmailId(user.getEmailId());
-			String token;
 			if(fetchedUser == null )
-				throw new BadCredentialsException("Invalid Username");
+				throw new ClientSideException(401,"Invalid Username");
 			if(!user.getPassword().equals(fetchedUser.getPassword()))
-				throw new BadCredentialsException("Invalid Password");
-			token = jwtUtil.generateToken(fetchedUser);
-			return ResponseEntity.ok().body(Map.of("token", token));
-		} catch (BadCredentialsException e) {
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message",e.getMessage()));
-		}
+				throw new ClientSideException(401,"Invalid Password");
+			return jwtUtil.generateToken(fetchedUser);
 	}
 }

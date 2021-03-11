@@ -20,7 +20,7 @@ public class EmailServiceImpl implements EmailService {
 		//simpleMailMessage.setTo(user.getEmailId());
 		simpleMailMessage.setTo("agarwalhimanshu105@gmail.com");
 		simpleMailMessage.setText("Your OTP : "+otpNumber);
-		//javaMailSender.send(simpleMailMessage);
+		javaMailSender.send(simpleMailMessage);
 		return true;
 	}
 }
