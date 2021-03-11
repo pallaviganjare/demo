@@ -2,6 +2,9 @@ package com.taskTracker.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Document(collection = "users")
 public class User {
 

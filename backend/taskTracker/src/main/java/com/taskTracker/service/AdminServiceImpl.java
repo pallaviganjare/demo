@@ -14,11 +14,11 @@ public class AdminServiceImpl implements AdminService {
 	private UserRepository userRepository;
 	
 	@Override
-	public boolean createUser(User user)
+	public User createUser(User user)
 	{
 		if(userRepository.findByEmailId(user.getEmailId())!= null)
-			throw new ClientSideException(401,"Email ID already exists");
+			throw new ClientSideException(409,"Email ID already exists");
 		userRepository.insert(user);
-		return true;
+		return user;
 	}
 }
