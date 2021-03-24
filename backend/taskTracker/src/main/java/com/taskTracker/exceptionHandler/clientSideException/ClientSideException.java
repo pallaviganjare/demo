@@ -1,4 +1,4 @@
-package com.taskTracker.exceptionHandler;
+package com.taskTracker.exceptionHandler.clientSideException;
 
 public class ClientSideException extends RuntimeException {
 

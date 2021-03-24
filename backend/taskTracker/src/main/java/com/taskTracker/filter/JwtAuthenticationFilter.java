@@ -1,4 +1,4 @@
-package com.taskTracker.config;
+package com.taskTracker.filter;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,7 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.taskTracker.model.User;
+import com.taskTracker.model.user.User;
 import com.taskTracker.util.JWTUtil;
 
 @Component

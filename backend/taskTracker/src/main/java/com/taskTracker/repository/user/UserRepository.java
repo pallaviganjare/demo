@@ -1,10 +1,10 @@
-package com.taskTracker.repository;
+package com.taskTracker.repository.user;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.taskTracker.model.User;
+import com.taskTracker.model.user.User;
 
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {

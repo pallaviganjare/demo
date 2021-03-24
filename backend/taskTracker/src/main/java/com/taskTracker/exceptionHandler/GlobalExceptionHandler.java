@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.taskTracker.exceptionHandler.clientSideException.ClientSideException;
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
 	
@@ -13,7 +15,7 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<Object> ClientException(ClientSideException exception)
 	{
 		HashMap<String, String> map= new HashMap<String, String>();
-		map.put("Message",exception.getMessage());
+		map.put("message",exception.getMessage());
 		return ResponseEntity.status(exception.getResourceId()).body(map);
 	}
 

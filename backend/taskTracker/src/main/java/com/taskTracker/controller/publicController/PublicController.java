@@ -1,4 +1,4 @@
-package com.taskTracker.controller;
+package com.taskTracker.controller.publicController;
 
 import java.util.HashMap;
 
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.taskTracker.model.Otp;
-import com.taskTracker.model.User;
+import com.taskTracker.model.otp.Otp;
+import com.taskTracker.model.user.User;
 import com.taskTracker.service.ServiceLocator;
 
 @RestController

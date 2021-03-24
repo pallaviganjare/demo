@@ -2,7 +2,7 @@ package com.taskTracker.util;
 
 import org.springframework.stereotype.Component;
 
-import com.taskTracker.model.User;
+import com.taskTracker.model.user.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
@@ -29,7 +29,7 @@ public class JWTUtil {
 	}
 
 	final public String generateToken(User u) {
-		Claims claims = Jwts.claims().setSubject(u.getFirstName());
+		Claims claims = Jwts.claims().setSubject(u.getFirstName()+" "+u.getLastName());
 		claims.put("emailId", u.getEmailId());
 		claims.put("role", u.getRole());
 

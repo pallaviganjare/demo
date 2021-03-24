@@ -1,4 +1,4 @@
-package com.taskTracker.service;
+package com.taskTracker.service.otp;
 
 import java.util.Date;
 import java.util.Random;
@@ -6,11 +6,12 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.taskTracker.exceptionHandler.ClientSideException;
-import com.taskTracker.model.Otp;
-import com.taskTracker.model.User;
-import com.taskTracker.repository.OtpRepository;
-import com.taskTracker.repository.UserRepository;
+import com.taskTracker.exceptionHandler.clientSideException.ClientSideException;
+import com.taskTracker.model.otp.Otp;
+import com.taskTracker.model.user.User;
+import com.taskTracker.repository.otp.OtpRepository;
+import com.taskTracker.repository.user.UserRepository;
+import com.taskTracker.service.ServiceLocator;
 import com.taskTracker.util.JWTUtil;
 
 @Service

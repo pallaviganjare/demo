@@ -1,4 +1,4 @@
-package com.taskTracker.model;
+package com.taskTracker.model.otp;
 
 import java.util.Date;
 

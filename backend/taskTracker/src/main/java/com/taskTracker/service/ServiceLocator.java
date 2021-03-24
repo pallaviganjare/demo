@@ -3,6 +3,11 @@ package com.taskTracker.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.taskTracker.service.admin.AdminService;
+import com.taskTracker.service.email.EmailService;
+import com.taskTracker.service.otp.OtpService;
+import com.taskTracker.service.publicService.PublicService;
+
 @Component
 public class ServiceLocator {
 

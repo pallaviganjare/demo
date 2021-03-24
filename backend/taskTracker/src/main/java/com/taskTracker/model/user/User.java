@@ -1,4 +1,4 @@
-package com.taskTracker.model;
+package com.taskTracker.model.user;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
