@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.taskTracker.exceptionHandler.clientSideException.ClientSideException;
 import com.taskTracker.model.user.User;
+import com.taskTracker.repository.role.RoleRepository;
 import com.taskTracker.repository.user.UserRepository;
 
 @Service
@@ -17,12 +18,16 @@ public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private RoleRepository roleRepository;
 	
 	@Override
 	public User createUser(User user)
 	{
 		if(userRepository.findByEmailId(user.getEmailId())!= null)
 			throw new ClientSideException(409,"Email ID already exists");
+		user.setRole_id(roleRepository.findByName(user.getRole()).get_id());
+		user.setRole(null);
 		userRepository.insert(user);
 		return user;
 	}
