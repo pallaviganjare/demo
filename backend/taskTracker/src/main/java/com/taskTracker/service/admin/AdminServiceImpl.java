@@ -38,12 +38,11 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public Map<Object, Object> getUsers(User user)
+	public Map<Object, Object> getUsers(long rowCount,long pageNumber)
 	{
 		Map<Object,Object> map=new HashMap<Object, Object>();
-		float pageCount =(float)userRepository.count()/(float)user.getRowCount();
-		map.put("totalPage",Math.ceil(pageCount));
-		PageRequest request = PageRequest.of((int)user.getPageNo()-1,(int)user.getRowCount());
+		map.put("totalCount",userRepository.count());
+		PageRequest request = PageRequest.of((int)pageNumber,(int)rowCount);
 		map.put("value",userRepository.findAll(request).getContent());
 		return map;
 	}

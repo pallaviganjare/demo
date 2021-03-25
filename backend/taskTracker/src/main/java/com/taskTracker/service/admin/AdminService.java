@@ -11,6 +11,7 @@ public interface AdminService {
 
 	Map<String,List<String>> getRoles();
 
-	Map<?, ?> getUsers(User user);
+	Map<Object, Object> getUsers(long rowCount, long pageNumber);
+
 
 }

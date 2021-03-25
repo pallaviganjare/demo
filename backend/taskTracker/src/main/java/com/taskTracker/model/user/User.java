@@ -14,8 +14,6 @@ public class User {
 	private String emailId;
 	private String role_id;
 	private String designation;
-	private long pageNo;
-	private long rowCount;
 	private String role;
 	public String getRole() {
 		return role;
@@ -25,21 +23,7 @@ public class User {
 		this.role = role;
 	}
 
-	public long getPageNo() {
-		return pageNo;
-	}
-
-	public void setPageNo(long pageNo) {
-		this.pageNo = pageNo;
-	}
-
-	public long getRowCount() {
-		return rowCount;
-	}
-
-	public void setRowCount(long rowCount) {
-		this.rowCount = rowCount;
-	}
+	
 
 	public String getDesignation() {
 		return designation;
