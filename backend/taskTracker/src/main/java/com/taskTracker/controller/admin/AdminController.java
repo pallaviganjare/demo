@@ -24,4 +24,9 @@ public class AdminController {
 	{
 			return null;
 	}
+	@PostMapping(path = "/getUsers", consumes = "application/json", produces = "application/json")
+	ResponseEntity<Object> getUsers(@RequestBody User user)
+	{
+			return ResponseEntity.ok().body(ServiceLocator.getAdminService().getUsers(user));
+	}
 }

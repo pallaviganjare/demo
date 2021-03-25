@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.taskTracker.exceptionHandler.clientSideException.ClientSideException;
 import com.taskTracker.model.user.User;
+import com.taskTracker.repository.role.RoleRepository;
 import com.taskTracker.repository.user.UserRepository;
 import com.taskTracker.util.JWTUtil;
 
@@ -15,6 +16,8 @@ public class PublicServiceImpl  implements PublicService{
 	private JWTUtil jwtUtil;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private RoleRepository roleRepository;
 
 	@Override
 	public String login(User user) {
@@ -23,6 +26,7 @@ public class PublicServiceImpl  implements PublicService{
 				throw new ClientSideException(401,"Invalid Username");
 			if(!user.getPassword().equals(fetchedUser.getPassword()))
 				throw new ClientSideException(401,"Invalid Password");
+			fetchedUser.setRole(roleRepository.findById(fetchedUser.getRole_id()).get().getName());
 			return jwtUtil.generateToken(fetchedUser);
 	}
 }

@@ -12,8 +12,34 @@ public class User {
 	private String lastName;
 	private String password;
 	private String emailId;
-	private String role;
+	private String role_id;
 	private String designation;
+	private long pageNo;
+	private long rowCount;
+	private String role;
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public long getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(long pageNo) {
+		this.pageNo = pageNo;
+	}
+
+	public long getRowCount() {
+		return rowCount;
+	}
+
+	public void setRowCount(long rowCount) {
+		this.rowCount = rowCount;
+	}
 
 	public String getDesignation() {
 		return designation;
@@ -46,12 +72,12 @@ public class User {
 		this.emailId = emailId;
 	}
 
-	public String getRole() {
-		return role;
+	public String getRole_id() {
+		return role_id;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setRole_id(String role_id) {
+		this.role_id = role_id;
 	}
 
 	public String getPassword() {
